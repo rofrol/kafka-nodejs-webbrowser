@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<script>
+    // Create WebSocket connection.
+    const socket = new WebSocket(
+      'production' !== process.env.NODE_ENV ?
+        'ws://localhost:8080' :
+        window.location.origin.replace(/^http/, 'ws')
+    );
+
+    const message = 'Hello Server!';
+    // Connection opened 
+    socket.addEventListener('open', function (event) {
+      socket.send(message);
+    });
+
+
+    // Listen for messages
+    socket.addEventListener('message', function (event) {
+      console.log('event.data:', event.data)
+    });
+</script>
