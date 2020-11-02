@@ -13,8 +13,10 @@ server.listen(port, () =>
   console.log(`USCC API server listening on port ${port}`)
 );
 
+let sockets = [];
 const wsServer = new ws.Server({ noServer: true });
 wsServer.on('connection', socket => {
+  sockets.push(socket);
   socket.on('message', message => {
     console.log(message);
     socket.send(message);
@@ -47,7 +49,9 @@ wsServer.on('connection', socket => {
   stream.on('data', function (message) {
     const messageString = message.value.toString();
     console.log(`Consumed message on Stream: ${messageString}`);
-    socket.send(messageString);
+    for (socket of sockets) {
+      socket.send(messageString)
+    }
   });
 });
 
