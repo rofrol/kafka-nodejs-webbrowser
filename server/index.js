@@ -46,7 +46,7 @@ wsServer.on('connection', socket => {
   let stream = new Kafka.KafkaConsumer.createReadStream(kafkaConf, { "auto.offset.reset": "earliest" }, { topics })
   stream.on('data', function (message) {
     const messageString = message.value.toString();
-    console.log(`Consumed message on Stream: ${messageString}`); 3
+    console.log(`Consumed message on Stream: ${messageString}`);
     socket.send(messageString);
   });
 });
