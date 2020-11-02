@@ -14,4 +14,4 @@ if [ "$(docker ps -aq -f status=exited -f name=${DOCKER_CONTAINER})" ]; then
     docker rm ${DOCKER_CONTAINER}
 fi
 
-docker run -p 8080:8080 -e RTDMURL='http://host.docker.internal:4000' -e CLOUDKARAFKA=true --name ${DOCKER_CONTAINER} ${DOCKER_IMAGE}
+docker run -p 8080:8080 -e CLOUDKARAFKA_USERNAME=${CLOUDKARAFKA_USERNAME} -e CLOUDKARAFKA_PASSWORD=${CLOUDKARAFKA_PASSWORD} --name ${DOCKER_CONTAINER} ${DOCKER_IMAGE}

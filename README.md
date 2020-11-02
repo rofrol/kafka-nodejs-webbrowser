@@ -2,6 +2,8 @@
 cp .env.example .env
 ```
 
+Add to `.env` your login and password for cloudkarafka.com.
+
 ```bash
 cd server
 npm i
