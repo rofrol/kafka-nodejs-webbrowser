@@ -6,6 +6,8 @@ cp .env.example .env
 
 Add to `.env` your login and password for cloudkarafka.com.
 
+In order to have `docker` command avaiable on Windows, start Docker Desktop first.
+
 ```bash
 cd server
 ./docker_build.sh
